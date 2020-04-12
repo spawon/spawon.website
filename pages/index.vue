@@ -7,8 +7,11 @@
         <VuesaxLogo />
       </header>
       <h1 class="title">
-        Nuxt.js + Vuesax + Auto deploy
+        Nuxt.js + Vuesax
       </h1>
+      <h2>
+        development
+      </h2>
       <h2 class="subtitle">
         <a href="https://vuesax.com/">Vuesax</a> is a framework of ui components for <a
           href="https://vuejs.org/"
