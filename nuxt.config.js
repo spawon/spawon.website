@@ -59,5 +59,11 @@ module.exports = {
     */
     // extend (config, ctx) {
     // }
+  },
+  option: {
+    server: {
+      host: '0.0.0.0',
+      port: '8964'
+    }
   }
 }
