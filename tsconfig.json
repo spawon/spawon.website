@@ -25,7 +25,9 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
+      "@nuxt/typescript-build",
+      "@nuxt/typescript-runtime"
     ]
   },
   "exclude": [
