@@ -60,10 +60,7 @@ module.exports = {
     // extend (config, ctx) {
     // }
   },
-  option: {
-    server: {
-      host: '0.0.0.0',
-      port: '8964'
-    }
+  server: {
+    port: process.env.NODE_ENV === 'production' ? 5000 : 3000
   }
 }

@@ -5,12 +5,13 @@ const app = express()
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
-const pConfig = require('../nuxt.config.prodaction.js')
 config.dev = process.env.NODE_ENV !== 'production'
+
+console.log(process.env.NODE_ENV)
 
 async function start () {
   // Init Nuxt.js
-  const nuxt = new Nuxt(process.env.NODE_ENV === 'production' ? pConfig : config)
+  const nuxt = new Nuxt(config)
 
   const { host, port } = nuxt.options.server
 
