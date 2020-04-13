@@ -23,26 +23,26 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'vuesax/dist/vuesax.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuesax'
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    '@nuxtjs/vuetify'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-vuex-localstorage'
   ],
   /*
   ** Axios module configuration
