@@ -18,31 +18,32 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#283a5d' },
   /*
   ** Global CSS
   */
   css: [
+    '~assets/scss/themes/dark.scss',
+    '~assets/scss/reset.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/vue-meta'
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxt/typescript-build',
-    '@nuxtjs/vuetify'
+    '@nuxt/typescript-build'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    'nuxt-vuex-localstorage'
+    '@nuxtjs/axios'
   ],
   /*
   ** Axios module configuration
@@ -61,6 +62,10 @@ module.exports = {
     // }
   },
   server: {
-    port: process.env.NODE_ENV === 'production' ? 5000 : 3000
+    host: '0.0.0.0',
+    port: process.env.NODE_ENV === 'production' ? 5000 : 3000,
+    timing: {
+      total: true
+    }
   }
 }
