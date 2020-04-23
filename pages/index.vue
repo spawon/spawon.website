@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-if="$store.state.auth">
+    <div v-if="$auth.loggedIn">
+      {{ $auth.user }}
       <p>
         You are authenticated. You can see the
         <NuxtLink to="/secret">
@@ -24,8 +25,8 @@
 
 export default {
   methods: {
-    logout () {
-      this.$store.dispatch('logout')
+    async logout () {
+      await this.$auth.logout()
     }
   }
 }

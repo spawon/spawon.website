@@ -1,33 +1,40 @@
 <template>
-  <div class="container">
-    <h1>Sign in to access the secret page</h1>
-    <div>
-      <label for="email">
-        <input id="email" type="email" value="test">
-      </label>
-      <label for="password">
-        <input id="password" type="password" value="test">
-      </label>
-      <button @click="postLogin">
-        login
-      </button>
-      <p>The credentials are not verified for the example purpose.</p>
-    </div>
+  <div>
+    <form @submit.prevent="userLogin">
+      <div>
+        <label>Username</label>
+        <input v-model="login.name" type="text">
+      </div>
+      <div>
+        <label>Password</label>
+        <input v-model="login.password" type="text">
+      </div>
+      <div>
+        <button type="submit">
+          Submit
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-  middleware: 'notAuthenticated',
+  data () {
+    return {
+      login: {
+        name: '',
+        password: ''
+      }
+    }
+  },
   methods: {
-    async postLogin () {
+    async userLogin () {
       try {
-        await this.$store.dispatch('login', { login: 'login', password: 'pass' })
-        if (this.$store.state.auth) {
-          this.$router.push('/')
-        }
-      } catch (e) {
-        console.log(e)
+        const response = await this.$auth.loginWith('local', { data: this.login })
+        console.log(response)
+      } catch (err) {
+        console.log(err)
       }
     }
   }
