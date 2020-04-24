@@ -42,17 +42,25 @@ const users = [
   {
     id: 1,
     name: 'demo',
-    password: 'demo'
+    password: 'demo',
+    role: 'ADMIN'
   },
   {
     id: 2,
     name: 'jon',
-    password: '123'
+    password: '123',
+    role: 'USER'
   }
 ]
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({ user: { id: 1 } })
+  res.json({
+    user: {
+      id: req.user.id,
+      name: req.user.name,
+      role: req.user.role
+    }
+  })
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -68,7 +76,7 @@ app.post('/login', (req, res) => {
     }
 
     if (user.password === password) {
-      const payload = { id: user.id }
+      const payload = { id: user.id, role: user.role }
       const token = jwt.sign(payload, jwtOptions.secretOrKey)
       res.json({ message: 'OK', token })
     } else {
