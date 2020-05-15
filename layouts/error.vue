@@ -11,11 +11,10 @@
       </div>
       <p v-if="statusCode === 404" class="description">
         <NuxtLink no-prefetch class="error-link" to="/">
-         Главная
+          Главная
         </NuxtLink>
       </p>
-      <div class="logo">
-      </div>
+      <div class="logo" />
     </div>
   </div>
 </template>

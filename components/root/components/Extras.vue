@@ -1,11 +1,12 @@
 <template>
-
+  <div>
+    copy
+  </div>
 </template>
-
 <script>
-  export default {
-    name: 'Extras'
-  }
+export default {
+  name: 'Extras'
+}
 </script>
 
 <style scoped>

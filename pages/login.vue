@@ -32,8 +32,10 @@ export default {
     async userLogin () {
       try {
         const response = await this.$auth.loginWith('local', { data: this.login })
+        // eslint-disable-next-line no-console
         console.log(response)
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.log(err)
       }
     }

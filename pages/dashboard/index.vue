@@ -3,7 +3,7 @@
     sdffsdddddddddddddddddddddddddddddddddddddd
     sdffsdddddddddddddddddddddddddddddddddddddd
     sdffsdddddddddddddddddddddddddddddddddddddd
-    <div class="size"></div>
+    <div class="size" />
   </simplebar>
 </template>
 

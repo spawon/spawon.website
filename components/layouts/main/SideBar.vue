@@ -1,6 +1,6 @@
 <template>
   <div class="side-bar" :class="{active: sidebar}">
-    <div class="test"></div>
+    <div class="test" />
     {{ sidebar }}
   </div>
 </template>

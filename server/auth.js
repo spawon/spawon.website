@@ -17,9 +17,8 @@ jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken()
 
 jwtOptions.secretOrKey = secret
 
-const strategy = new JwtStrategy(jwtOptions, (jwt_payload, next) => {
-  console.log('payload received', jwt_payload)
-  const user = users[_.findIndex(users, { id: jwt_payload.id })]
+const strategy = new JwtStrategy(jwtOptions, (jwtPayload, next) => {
+  const user = users[_.findIndex(users, { id: jwtPayload.id })]
   if (user) {
     next(null, user)
   } else {
@@ -65,7 +64,6 @@ app.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.post('/login', (req, res) => {
-  console.log(req.body)
   if (req.body.name && req.body.password) {
     const name = req.body.name
     const password = req.body.password
@@ -89,7 +87,6 @@ app.post('/login', (req, res) => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.post('/logout', authorized(), (req, res) => {
-  console.log('work')
 })
 
 module.exports = {
