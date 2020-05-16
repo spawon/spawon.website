@@ -23,5 +23,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+  footer{
+    display: flex;
+    flex-flow: column;
+    background: #181c3c;
+    padding: 0 15px;
+    .top, .copyright{
+      display: flex;
+    }
+  }
 </style>
