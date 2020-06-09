@@ -13,10 +13,13 @@
     <div class="search">
       <span>
         <p
+          class="search-block"
           ref="editable"
           contenteditable
+          spellcheck="true"
           v-on="listeners"
           @blur="checkSearch"
+          @keyup.enter.prevent = "searching"
         />
       </span>
     </div>
@@ -31,6 +34,8 @@
 </template>
 
 <script>
+import axios from "~/.nuxt/axios";
+
 export default {
   name: 'Search',
   data () {
@@ -56,8 +61,13 @@ export default {
     onSearch () {
       if (!this.$refs.search.classList.contains('active')) {
         this.$refs.editable.focus()
+        this.$refs.search.classList.add('active')
       }
-      this.$refs.search.classList.add('active')
+      if (this.search.length !== 0 && this.$refs.search.classList.contains('active')) {
+        this.searching()
+
+      }
+
     },
     checkSearch () {
       if (this.search.length === 0) {
@@ -68,6 +78,10 @@ export default {
       this.search = ''
       this.$refs.editable.textContent = ''
       this.$refs.search.classList.remove('active')
+    },
+    searching () {
+      this.$nuxt.$router.push( `/search?${this.search}`);
+      this.$refs.editable.textContent = ''
     }
   }
 }
@@ -89,6 +103,9 @@ export default {
         &:focus {
           outline: none;
         }
+      }
+      .search-block{
+        white-space: nowrap;
       }
     }
 

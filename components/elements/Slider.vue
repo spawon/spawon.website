@@ -47,6 +47,11 @@
     },
     mounted() {
       this.init()
+      this.$router.beforeEach((to, from, next) => {
+        clearInterval(this.progressTimer)
+        clearInterval(this.autoScroll)
+        return next()
+      })
     },
     methods: {
       init() {
@@ -133,10 +138,15 @@
         }, this.interval / 1000)
       },
       clearProgress(){
-        this.$refs.progress.style.width = `0`
-        this.progress = 0
-        clearInterval(this.progressTimer)
+        if ( this.$refs.progress) {
+          this.$refs.progress.style.width = `0`
+          this.progress = 0
+          clearInterval(this.progressTimer)
+        }
       }
+    },
+    beforeRouteEnter(){
+      clearInterval(this.progressTimer)
     }
   }
 </script>
